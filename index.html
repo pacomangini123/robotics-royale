@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robotics Royale — FUSALMO</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Orbitron (futurista) + Exo 2 (cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet" />
+  <!-- Iconos (Lucide via CDN) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- ============================================================
+       CANVAS DE PARTÍCULAS (fondo animado global)
+  ============================================================ -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- ============================================================
+       NAVBAR FIJA
+  ============================================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">ROBOTICS <span class="logo-accent">ROYALE</span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">Quiénes Somos</a></li>
+        <li><a href="#team" class="nav-link">Equipo</a></li>
+        <li><a href="#mission" class="nav-link">Misión</a></li>
+        <li><a href="#timeline" class="nav-link">Road to Korea</a></li>
+        <li><a href="#gallery" class="nav-link">Galería</a></li>
+        <li><a href="#stats" class="nav-link">Stats</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section class="hero" id="hero">
+    <!-- Rejilla holográfica de fondo -->
+    <div class="hero-grid"></div>
+    <!-- Orbes de luz neón -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="flag">🇸🇻</span>
+        <span>El Salvador · Fusalmo · Soyapango</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line line-1">ROBOTICS</span>
+        <span class="title-line line-2">ROYALE</span>
+      </h1>
+      <p class="hero-subtitle">
+        4 Jovenes, 1000 metas y 1 sueño —<br>
+        <em>construyen el futuro de un país entero.</em>
+      </p>
+      <div class="hero-cta">
+        <a href="#team" class="btn btn-primary">
+          <span>Conoce Nuestro Equipo</span>
+          <i data-lucide="users" class="btn-icon"></i>
+        </a>
+        <a href="#timeline" class="btn btn-ghost">
+          <span>Nuestro Sueño Mundialista</span>
+          <i data-lucide="trophy" class="btn-icon"></i>
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <i data-lucide="cpu"></i>
+          <span>STEAM Maker Challenge</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <i data-lucide="map-pin"></i>
+          <span>Destino: Corea del Sur 🇰🇷</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decoración de circuito animado en esquina -->
+    <svg class="circuit-deco" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 100 H80 V40 H160 V80 H140 V120 H180" fill="none" stroke="url(#circuitGrad)" stroke-width="1.5"/>
+      <path d="M20 140 H60 V160 H100 V130 H140 V170 H180" fill="none" stroke="url(#circuitGrad)" stroke-width="1.5"/>
+      <circle cx="80" cy="100" r="4" fill="#7c3aed"/>
+      <circle cx="160" cy="80" r="4" fill="#3b82f6"/>
+      <circle cx="60" cy="160" r="4" fill="#7c3aed"/>
+      <circle cx="140" cy="130" r="4" fill="#3b82f6"/>
+      <defs>
+        <linearGradient id="circuitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.3"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <!-- Scroll indicador -->
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 2 — QUIÉNES SOMOS
+  ============================================================ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 01 — Identidad</span>
+        <h2 class="section-title">Quiénes <span class="accent">Somos</span></h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-hexagon">
+            <div class="hex-inner">
+              <span class="hex-emoji">🤖</span>
+              <span class="hex-label">STREET MIND, TECH GRIND</span>
+            </div>
+          </div>
+          <div class="about-tags">
+            <span class="tag">#Soyapango</span>
+            <span class="tag">#ElSalvador</span>
+            <span class="tag">#Fusalmo</span>
+            <span class="tag">#Robótica</span>
+            <span class="tag">#SteamMaker</span>
+          </div>
+        </div>
+
+        <div class="about-text">
+          <p class="about-lead">
+            Somos <strong>Robotics Royale</strong>, un equipo de robótica nacido en las aulas de
+            <strong>Fusalmo</strong>, en el corazón de <strong>Soyapango, El Salvador</strong>.
+          </p>
+          <p>
+            Cinco mentes apasionadas —cuatro estudiantes y un mentor— que decidieron que los límites
+            no se inventaron para los soñadores. Cada tornillo ajustado, cada línea de código
+            escrita, cada tarde de práctica, es un paso más hacia demostrar que <strong>el talento
+            salvadoreño no tiene fronteras.</strong>
+          </p>
+          <p>
+            Competimos en la <strong>STEAM Maker Challenge</strong>, una de las competencias de
+            robótica más exigentes y grandes de la región. Nuestro objetivo es claro: clasificar al
+            <strong>mundial de robótica en Corea del Sur asi mismo</strong>  llevar en alto la bandera de
+            nuestro país.
+          </p>
+          <div class="about-values">
+            <div class="value-item">
+              <i data-lucide="zap"></i>
+              <span>Innovadores</span>
+            </div>
+            <div class="value-item">
+              <i data-lucide="heart"></i>
+              <span>Apasionados</span>
+            </div>
+            <div class="value-item">
+              <i data-lucide="target"></i>
+              <span>Competitivos</span>
+            </div>
+            <div class="value-item">
+              <i data-lucide="star"></i>
+              <span>Soñadores</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 3 — INTEGRANTES
+  ============================================================ -->
+  <section class="team" id="team">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 02 — El Equipo</span>
+        <h2 class="section-title">Nuestros <span class="accent">Integrantes</span></h2>
+        <p class="section-subtitle">5 personas, 1 sueño, infinitas posibilidades.</p>
+      </div>
+
+      <div class="team-grid">
+
+        <!-- MENTOR — tarjeta especial -->
+        <!-- ⚠️ IMAGEN: Reemplaza "placeholder" por la URL real del mentor -->
+        <div class="team-card mentor-card" data-delay="0">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="member-avatar">
+              <!-- FOTO: stephanie.png -->
+              <img src="stephanie.png" alt="Stephanie — Mentora" class="avatar-img" />
+              <div class="avatar-ring"></div>
+            </div>
+            <div class="mentor-badge">MENTOR</div>
+          </div>
+          <div class="card-body">
+            <!-- REEMPLAZAR con nombre real del mentor -->
+            <h3 class="member-name">Prof. Mentor</h3>
+            <span class="member-role">Guía & Coach Técnico</span>
+            <p class="member-desc">
+              La brújula del equipo. Con experiencia, visión y paciencia infinita,
+              guía a Robotics Royale hacia la excelencia técnica y competitiva.
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="skill-bar"><div class="skill-fill" style="--w:95%"></div></div>
+            <span class="skill-label">Liderazgo Técnico</span>
+          </div>
+        </div>
+
+        <!-- INTEGRANTE 1 — PACO (Capitán) -->
+        <div class="team-card" data-delay="100">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="member-avatar">
+              <!-- FOTO: paco.png — ya colocada en la carpeta del proyecto -->
+              <img src="paco.png" alt="Paco — Capitán" class="avatar-img" />
+              <div class="avatar-ring"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- REEMPLAZAR con nombre real -->
+            <h3 class="member-name">Francisco L.</h3>
+            <span class="member-role">Capitan</span>
+            <p class="member-desc">
+             Él es el capitán de Robotics Royale, el líder que mantiene unido al equipo en cada desafío, transformando ideas en innovación y sueños en objetivos reales.
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div>
+            <span class="skill-label">Capitan y Liderazgo</span>
+          </div>
+        </div>
+
+        <!-- INTEGRANTE 2 -->
+        <!-- ⚠️ IMAGEN: Reemplaza el src con la foto real del integrante 2 -->
+        <div class="team-card" data-delay="200">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="member-avatar">
+              <!-- FOTO: elias.png -->
+              <img src="elias.png" alt="Elias — Integrante 2" class="avatar-img" />
+              <div class="avatar-ring"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- REEMPLAZAR con nombre real -->
+            <h3 class="member-name">Elias A.</h3>
+            <span class="member-role">Diseñador Mecánico</span>
+            <p class="member-desc">
+              Las manos que dan forma al robot. Diseña estructuras robustas,
+              precisas y elegantes que resisten cualquier desafío en la arena.
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="skill-bar"><div class="skill-fill" style="--w:92%"></div></div>
+            <span class="skill-label">Mecánica & Construcción</span>
+          </div>
+        </div>
+
+        <!-- INTEGRANTE 3 -->
+        <!-- ⚠️ IMAGEN: Reemplaza el src con la foto real del integrante 3 -->
+        <div class="team-card" data-delay="300">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="member-avatar">
+              <!-- FOTO: kevin.png -->
+              <img src="kevin.png" alt="Kevin — Integrante 3" class="avatar-img" />
+              <div class="avatar-ring"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- REEMPLAZAR con nombre real -->
+            <h3 class="member-name">Kevin A.</h3>
+            <span class="member-role">Programador Principal</span>
+            <p class="member-desc">
+             “Él es el programador de Robotics Royale, la mente detrás del código que da vida a cada movimiento, cada estrategia y cada innovación del equipo
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
+            <span class="skill-label">Astuto y Listo</span>
+          </div>
+        </div>
+
+        <!-- INTEGRANTE 4 -->
+        <!-- ⚠️ IMAGEN: Reemplaza el src con la foto real del integrante 4 -->
+        <div class="team-card" data-delay="400">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="member-avatar">
+              <!-- FOTO: recinos.png -->
+              <img src="recinos.png" alt="Recinos — Integrante 4" class="avatar-img" />
+              <div class="avatar-ring"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- REEMPLAZAR con nombre real -->
+            <h3 class="member-name">Itzel R.</h3>
+            <span class="member-role">Programadora Principal</span>
+            <p class="member-desc">
+              La programación es su lenguaje, pero la robótica es la forma en la que inspira al mundo.
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
+            <span class="skill-label">Fortalezedora y Valiente</span>
+          </div>
+        </div>
+
+      </div><!-- /team-grid -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 4 — NUESTRA MISIÓN
+  ============================================================ -->
+  <section class="mission" id="mission">
+    <div class="mission-bg-text">MISIÓN</div>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 03 — Propósito</span>
+        <h2 class="section-title">Nuestra <span class="accent">Misión</span></h2>
+      </div>
+
+      <div class="mission-grid">
+
+        <div class="mission-card" data-delay="0">
+          <div class="mission-icon"><i data-lucide="lightbulb"></i></div>
+          <h3>Innovación Real</h3>
+          <p>No solo construimos robots — creamos soluciones que responden a problemas reales de nuestra comunidad. Cada proyecto tiene propósito.</p>
+        </div>
+
+        <div class="mission-card" data-delay="100">
+          <div class="mission-icon"><i data-lucide="globe"></i></div>
+          <h3>Orgullo Salvadoreño</h3>
+          <p>Portamos la bandera azul y blanco con orgullo. Cada competencia es una oportunidad de demostrar que en El Salvador hay talento de clase mundial.</p>
+        </div>
+
+        <div class="mission-card" data-delay="200">
+          <div class="mission-icon"><i data-lucide="users"></i></div>
+          <h3>Trabajo en Equipo</h3>
+          <p>Nuestro robot es tan bueno como nuestra unión. Cinco mentes, cinco habilidades distintas, un solo objetivo: ganar juntos y crecer juntos.</p>
+        </div>
+
+        <div class="mission-card" data-delay="300">
+          <div class="mission-icon"><i data-lucide="rocket"></i></div>
+          <h3>Robótica con Propósito</h3>
+          <p>Creemos que la tecnología debe servir a las personas. Usamos la robótica como herramienta para imaginar un futuro mejor para todos.</p>
+        </div>
+
+        <div class="mission-card" data-delay="400">
+          <div class="mission-icon"><i data-lucide="sparkles"></i></div>
+          <h3>Inspirar a Otros</h3>
+          <p>Somos el ejemplo de que los sueños no tienen dirección postal. Queremos que más jóvenes de Soyapango y de todo El Salvador se atrevan a soñar en grande.</p>
+        </div>
+
+        <div class="mission-card mission-card--cta" data-delay="500">
+          <div class="mission-icon"><i data-lucide="flag"></i></div>
+          <h3>Corea del Sur o Nada</h3>
+          <p>El mundial de robótica no es un sueño lejano — es el destino al que cada día de trabajo nos acerca. <strong>Nos vemos en Korea.</strong></p>
+          <span class="korea-flag">🇰🇷</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN 5 — ROAD TO KOREA (línea de tiempo)
+  ============================================================ -->
+  <section class="timeline" id="timeline">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 04 — Journey</span>
+        <h2 class="section-title">Road to <span class="accent">Korea</span> 🇰🇷</h2>
+        <p class="section-subtitle">El camino de Soyapango a Seúl.</p>
+      </div>
+
+      <div class="timeline-track">
+        <div class="timeline-line"></div>
+
+        <!-- Evento 1 -->
+        <div class="tl-item tl-left" data-delay="0">
+          <div class="tl-dot">
+            <i data-lucide="play-circle"></i>
+          </div>
+          <div class="tl-card">
+            <span class="tl-phase">Origen</span>
+            <h3>Nace Robotics Royale</h3>
+            <p>Un grupo de jóvenes de Fusalmo decide unirse bajo un mismo sueño: competir en robótica al más alto nivel internacional. El equipo toma forma.</p>
+            <div class="tl-tag">🏫 Fusalmo · Soyapango</div>
+          </div>
+        </div>
+
+        <!-- Evento 2 -->
+        <div class="tl-item tl-right" data-delay="150">
+          <div class="tl-dot">
+            <i data-lucide="settings"></i>
+          </div>
+          <div class="tl-card">
+            <span class="tl-phase">Preparación</span>
+            <h3>Entrenamiento Intensivo</h3>
+            <p>Tardes de código, días de diseño mecánico y pruebas de circuitos. El equipo construye sus habilidades con disciplina y determinación brutal.</p>
+            <div class="tl-tag">⚙️ Construcción & Programación</div>
+          </div>
+        </div>
+
+        <!-- Evento 3 -->
+        <div class="tl-item tl-left" data-delay="300">
+          <div class="tl-dot active">
+            <i data-lucide="zap"></i>
+          </div>
+          <div class="tl-card tl-card--active">
+            <span class="tl-phase tl-phase--active">🔥 Ahora</span>
+            <h3>STEAM Maker Challenge</h3>
+            <p>La gran competencia. Todo el esfuerzo se pone a prueba frente a los mejores equipos el 7 y 13 de junio del presente año y. Robotics Royale sale a la arena con hambre de victoria.</p>
+            <div class="tl-tag">🏆 STEAM Maker Challenge 2025</div>
+          </div>
+        </div>
+
+        <!-- Evento 4 -->
+        <div class="tl-item tl-right" data-delay="450">
+          <div class="tl-dot">
+            <i data-lucide="award"></i>
+          </div>
+          <div class="tl-card">
+            <span class="tl-phase">Meta Nacional</span>
+            <h3>Clasificación Nacional</h3>
+            <p>El siguiente escalón: quedar entre los mejores a nivel nacional y obtener el boleto para representar a El Salvador en la etapa internacional.</p>
+            <div class="tl-tag">🇸🇻 Representando a El Salvador</div>
+          </div>
+        </div>
+
+        <!-- Evento 5 -->
+        <div class="tl-item tl-left" data-delay="600">
+          <div class="tl-dot">
+            <i data-lucide="plane"></i>
+          </div>
+          <div class="tl-card">
+            <span class="tl-phase">Internacional</span>
+            <h3>Clasificación al Mundial</h3>
+            <p>El momento culminante: recibir la confirmación de que Robotics Royale competirá por una plaza en el escenario mundial de robótica. El sueño hecho realidad.</p>
+            <div class="tl-tag">✈️ Vuelo confirmado</div>
+          </div>
+        </div>
+
+        <!-- Evento 6 — Final -->
+        <div class="tl-item tl-right tl-final" data-delay="750">
+          <div class="tl-dot tl-dot--final">
+            <span>🇰🇷</span>
+          </div>
+          <div class="tl-card tl-card--final">
+            <span class="tl-phase tl-phase--final">✨ El Sueño</span>
+            <h3>Corea del Sur — Mundial</h3>
+            <p>El destino final. Robotics Royale en la arena mundial de robótica, demostrando que cinco jóvenes de Soyapango pueden competir con cualquiera del mundo.</p>
+            <div class="tl-tag korea">🏆 World Championship · Korea del Sur</div>
+          </div>
+        </div>
+
+      </div><!-- /timeline-track -->
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECCIÓN 7 — ESTADÍSTICAS ANIMADAS
+  ============================================================ -->
+  <section class="stats" id="stats">
+    <div class="stats-bg"></div>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 06 — En Números</span>
+        <h2 class="section-title">Robotics Royale <span class="accent">en Cifras</span></h2>
+      </div>
+
+      <div class="stats-grid">
+
+        <div class="stat-card" data-target="1" data-suffix="" data-delay="0">
+          <div class="stat-icon"><i data-lucide="cpu"></i></div>
+          <div class="stat-number"><span class="counter">0</span></div>
+          <div class="stat-label">Equipo Élite</div>
+          <div class="stat-sub">Un solo nombre. Una sola misión.</div>
+        </div>
+
+        <div class="stat-card" data-target="5" data-suffix="" data-delay="100">
+          <div class="stat-icon"><i data-lucide="users"></i></div>
+          <div class="stat-number"><span class="counter">0</span></div>
+          <div class="stat-label">Miembros</div>
+          <div class="stat-sub">4 innovadores + 1 mentor legendario</div>
+        </div>
+
+        <div class="stat-card" data-target="100" data-suffix="%" data-delay="200">
+          <div class="stat-icon"><i data-lucide="heart"></i></div>
+          <div class="stat-number"><span class="counter">0</span><span class="stat-unit">%</span></div>
+          <div class="stat-label">Pasión</div>
+          <div class="stat-sub">Sin límites, sin excusas.</div>
+        </div>
+
+        <div class="stat-card" data-target="1" data-suffix="" data-delay="300">
+          <div class="stat-icon"><i data-lucide="trophy"></i></div>
+          <div class="stat-number"><span class="counter">0</span></div>
+          <div class="stat-label">Sueño Mundial</div>
+          <div class="stat-sub">Korea del Sur nos espera. 🇰🇷</div>
+        </div>
+
+        <div class="stat-card" data-target="24" data-suffix="h" data-delay="400">
+          <div class="stat-icon"><i data-lucide="clock"></i></div>
+          <div class="stat-number"><span class="counter">0</span><span class="stat-unit">h</span></div>
+          <div class="stat-label">Dedicación Diaria</div>
+          <div class="stat-sub">Soñamos con robots incluso dormidos.</div>
+        </div>
+
+        <div class="stat-card" data-target="0" data-suffix="" data-special="∞" data-delay="500">
+          <div class="stat-icon"><i data-lucide="infinity"></i></div>
+          <div class="stat-number"><span class="counter-special">∞</span></div>
+          <div class="stat-label">Potencial</div>
+          <div class="stat-sub">El talento salvadoreño no tiene techo.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span class="logo-icon">⬡</span>
+              <span>ROBOTICS <strong>ROYALE</strong></span>
+            </div>
+            <p class="footer-tagline">
+              "No construimos robots.<br>
+              Construimos el futuro de El Salvador."
+            </p>
+            <div class="footer-location">
+              <i data-lucide="map-pin"></i>
+              <span>Fusalmo · Soyapango, El Salvador 🇸🇻</span>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Navegación</h4>
+            <ul>
+              <li><a href="#about">Quiénes Somos</a></li>
+              <li><a href="#team">El Equipo</a></li>
+              <li><a href="#mission">Nuestra Misión</a></li>
+              <li><a href="#timeline">Road to Korea</a></li>
+              <li><a href="#gallery">Galería</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-social">
+            <h4>Síguenos</h4>
+            <div class="social-links">
+              <a href="https://www.instagram.com/smc_roboticsroyale/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+                <i data-lucide="instagram"></i>
+                <span>@smc_roboticsroyale</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-competition">
+            <h4>Competencia</h4>
+            <div class="comp-badge">
+              <i data-lucide="trophy"></i>
+              <div>
+                <strong>STEAM Maker Challenge</strong>
+                <span>Camino al mundial 🇰🇷</span>
+              </div>
+            </div>
+            <div class="comp-badge">
+              <i data-lucide="school"></i>
+              <div>
+                <strong>Academia Fusalmo</strong>
+                <span>Donde todo comenzó</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 Robotics Royale · Soyapango, El Salvador</p>
+        <p class="footer-inspire">
+          <em>"El talento no tiene dirección postal. Tiene voluntad."</em>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
+</body>
+</html>
